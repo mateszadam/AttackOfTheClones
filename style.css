@@ -1,12 +1,14 @@
 @import url('https://fonts.cdnfonts.com/css/star-wars');
 @import url('https://fonts.cdnfonts.com/css/star-jedi');
+@import url(https://fonts.googleapis.com/css?family=Rajdhani:300);
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@600&display=swap');
 *{
     padding: 0;
     margin: 0;
     color: white;
 }
 body {
-    background-image: url("img/wallpaperflare.com_wallpaper.jpg");
+    background-image: url("img/mainbackground.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -19,7 +21,7 @@ body {
 }
 .title{
     font-size: 70px;
-    font-family: 'Star Jedi', sans-serif;
+    font-family: 'Tektur', sans-serif;
     text-align: center;
     padding-top: 20px;
 }
@@ -45,13 +47,13 @@ body {
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
     padding-top: 20px;
-    font-family: 'Star Wars', sans-serif;
+    font-family: 'Tektur', sans-serif;
 }
 .card-text{
     font-size: 20px;
     text-align: center;
     padding-top: 20px;
-    font-family: 'Star Jedi Hollow', sans-serif;
+    font-family: 'Tektur', sans-serif;
 }
 .card-img-top{
     border-radius: 10px;
@@ -62,3 +64,142 @@ body {
     margin: auto;
     width: fit-content;
 }
+
+.navbar li { 
+    width: calc(20% - 5px);
+    height: 40px;
+    display: inline-block;
+    /* box-shadow: 0 0 25px #00dcdc, 0 1px 5px #212121; */
+    border-color: #c5cece;
+    background: #c5cece;
+    color: rgba(33, 33, 33, 0.7);
+    text-align: center;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 
+.glow, .scifiUI:hover h1, .scifiUI:hover ul li {
+    box-shadow: 0 0 25px #00dcdc, 0 1px 5px #212121;
+    border-color: #00dcdc;
+    background: #00dcdc;
+    color: rgba(33, 33, 33, 0.7);
+  }
+  
+  .scifiUI {
+    width: 300px;
+    margin: 100px auto;
+  }
+  .scifiUI:hover h1:after {
+    border-top-color: rgba(33, 33, 33, 0.7);
+  }
+  .scifiUI:hover ul li {
+    transform: skew(0);
+    width: 300px;
+    height: 50px;
+  }
+  .scifiUI:hover ul li:nth-child(1) {
+    left: 0;
+  }
+  .scifiUI:hover ul li:nth-child(2) {
+    left: 0;
+  }
+  .scifiUI:hover ul li:nth-child(3) {
+    left: 0;
+  }
+  .scifiUI:hover ul li:nth-child(4) {
+    left: 0;
+  }
+  .scifiUI:hover ul li:nth-child(5) {
+    left: 0;
+  }
+  .scifiUI:hover ul li:nth-child(6) {
+    left: 0;
+  }
+  .scifiUI:hover ul li:nth-child(7) {
+    left: 0;
+  }
+  .scifiUI * {
+    transition: all 300ms ease-in-out;
+  }
+  .scifiUI h1 {
+    position: relative;
+    display: inline;
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #00bebe;
+    background: rgba(0, 190, 190, 0.2);
+    color: #00bebe;
+    font-size: 1.6em;
+    text-align: center;
+    cursor: pointer;
+  }
+  .scifiUI h1:after {
+    content: "";
+    display: inline;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    border-top: 10px solid #00bebe;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 0;
+  }
+  .scifiUI ul {
+    list-style: none;
+    position: relative;
+    top: -20px;
+  }
+  .scifiUI ul li {
+    /* transform: skew(45deg) scaleY(-3); */
+    /* box-shadow: 0 3px 0 5px #212121 inset;
+    position: absolute;
+    display: inline;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #00bebe;
+    background: #00dcdc;
+    text-align: center;
+    font-size: 1.6em;
+    cursor: pointer;
+    float: left;
+  }
+  .scifiUI ul li:nth-child(1) {
+    top: 0px;
+    left: -500%;
+  }
+  .scifiUI ul li:nth-child(2) {
+    top: 50px;
+    left: 500%;
+  }
+  .scifiUI ul li:nth-child(3) {
+    top: 100px;
+    left: -500%;
+  }
+  .scifiUI ul li:nth-child(4) {
+    top: 150px;
+    left: 500%;
+  }
+  .scifiUI ul li:nth-child(5) {
+    top: 200px;
+    left: -500%;
+  }
+  .scifiUI ul li:nth-child(6) {
+    top: 250px;
+    left: 500%;
+  }
+  .scifiUI ul li:nth-child(7) {
+    top: 300px;
+    left: -500%;
+  }
+  .scifiUI ul li:hover {
+    transform: scale(1.08);
+    font-size: 1.8em;
+    z-index: 99;
+  }  */
