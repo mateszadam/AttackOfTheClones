@@ -3,7 +3,7 @@ let Species;
 let Planets;
 let Starships;
 let Vehicles;
-
+let perjel = String("/");
 getDatas();
 function getDatas() {
     console.log('getDatas');
@@ -16,42 +16,16 @@ function getDatas() {
             Planets = data[0].planets;
             Vehicles = data[0].vehicles;
             Starships = data[0].starships;
-            genSmallPeopleDatas();
-            genSmallSpeciesDatas();
-        })
-        .catch(error => {
-            // Handle any errors here
-            console.error(error);
-        });
-}
-
-function genSmallPeopleDatas() {
-    let row = "";
-    let card = "";
-    // console.log(People);
-    let peoples = "";
-    People.forEach(element => {
-        peoples += element + ",";
-    });
-        fetch('https://bgs.jedlik.eu/swapi/api/group/people?ids=' + peoples)
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(element => {
-                card = "";
-                card = `
-                <div class="card">
-                    <p class="card-title">${element.name}</p>
-                    <p class="card-text"></p>
-                    <div class="center">
-                        <img class="card-img-top" src="https://bgs.jedlik.eu/swimages/characters/${element.id}.jpg"></img>
-                    </div>
-                </div>
-                `;
-                row += card;
-                // console.log(row);
-            });
-
-            document.querySelector('.cards').innerHTML = row;
+            genDatas("people", "characters", People);
+            genDatas("species", "species", Species);
+            genDatas("planets", "planets", Planets);
+            genDatas("starships", "starships", Starships);
+            genDatas("vehicles", "vehicles", Vehicles);
+            
+        }).then(data => {
+            setTimeout(function () {
+                onClicks();
+            }, 2000)
         })
         .catch(error => {
             // Handle any errors here
@@ -98,8 +72,8 @@ function createDiv(thing, select) {
             <li>Terrain: ${thing.terrain}</li>
             <li>Population: ${thing.population}</li>
         `
-    else if (select == 'starships'){
-        ulInner = `[{"name":"CR90 corvette","model":"CR90 corvette","manufacturer":"Corellian Engineering Corporation","cost_in_credits":"3500000","length":"150","max_atmosphering_speed":"950","crew":"30-165","passengers":"600","cargo_capacity":"3000000","consumables":"1 year","hyperdrive_rating":"2.0","MGLT":"60","starship_class":"corvette","pilots":[],"films":["1","3","6"],"created":"2014-12-10T14:20:33.369000Z","edited":"2014-12-20T21:23:49.867000Z","url":"2","id":"2"}]
+    else if (select == 'starships' || select == 'vehicles'){
+        ulInner =`
             <li>Name: ${thing.name}</li>
             <li>Model: ${thing.model}</li>
             <li>Manufacturer: ${thing.manufacturer}</li>
@@ -109,38 +83,56 @@ function createDiv(thing, select) {
             <li>Crew: ${thing.crew}</li>
             <li>Passengers: ${thing.passengers}</li>
 
-<<<<<<< HEAD
         `
     }
+    document.querySelector('.modal-body').innerHTML = ulInner;
+
 }
 
-function selectById(e) {
-    const selected = e.dataset.id;
-    const response = fetch('https://bgs.jedlik.eu/swapi/api/' + selected);
-    const thing = response.json();
-    this.createDiv(thing, selected);
+function selectById(event) {
+    let selected;
+    if(event.target.dataset.id == undefined){
+        console.log(event.target.parentElement);
+        selected = event.target.parentElement.parentElement.dataset.id;
+    }
+    else{
+        console.log("def");
+        selected = event.target.dataset.id;
+    }
+    
+    console.log(selected);
+    fetch('https://bgs.jedlik.eu/swapi/api/' + selected)
+        .then(response => response.json())
+        .then(data => {
+            createDiv(data, selected.split(perjel)[0]);
+        })
+        .catch(error => {
+            // Handle any errors here
+            console.error(error);
+        });
+
 }
-=======
-function genSmallSpeciesDatas() {
+
+function genDatas(data1, img, idS) {
     let row = "";
     let card = "";
     let peoples = "";
-    console.log(Species);
-    Species.forEach(element => {
+    console.log(idS);
+    idS.forEach(element => {
         peoples += element + ",";
     });
-        fetch('https://bgs.jedlik.eu/swapi/api/group/species?ids=' + peoples)
+        fetch(`https://bgs.jedlik.eu/swapi/api/group/${data1}?ids=` + peoples)
         .then(response => response.json())
         .then(data => {
             console.log(data);
             data.forEach(element => {
                 card = "";
                 card = `
-                <div class="card">
+                <div class="card" data-id="${data1.toString() + perjel.toString() + element.id.toString()}">
                     <p class="card-title">${element.name}</p>
                     <p class="card-text"></p>
                     <div class="center">
-                        <img class="card-img-top" src="https://bgs.jedlik.eu/swimages/species/${element.id}.jpg"></img>
+                        <img class="card-img-top" src="https://bgs.jedlik.eu/swimages/${img}/${element.id}.jpg"></img>
                     </div>
                 </div>
                 `;
@@ -154,4 +146,11 @@ function genSmallSpeciesDatas() {
             console.error(error);
         });
 }
->>>>>>> 99d961d35df03e6642d6a84a4f999fefdc07df46
+
+function onClicks() {
+    let cards = document.querySelectorAll('.card');
+    console.log(cards);
+    cards.forEach(element => {
+        element.addEventListener('click', selectById);
+    });
+}

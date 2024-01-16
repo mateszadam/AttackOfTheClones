@@ -14,6 +14,11 @@ body {
     background-attachment: fixed;
 
 }
+.card-title, .card-text, .center, .card-img-top{
+  pointer-events: none;
+  user-select: none;
+}
+
 .effect{
     background-color: rgba(0, 0, 0, 0.658);
     height: 100vh;
