@@ -14,6 +14,7 @@ body {
     background-attachment: fixed;
 
 }
+<<<<<<< HEAD
 
 header {
   position: fixed;
@@ -61,6 +62,11 @@ section {
   font-weight: 700;
   font-size: 50px;
   font-family: 'Tektur', sans-serif;
+=======
+.card-title, .card-text, .center, .card-img-top{
+  pointer-events: none;
+  user-select: none;
+>>>>>>> 918f2e2f8ec789dfab4deaa2c5749d9ec4264852
 }
 
 .effect{
