@@ -63,7 +63,7 @@ function createDiv(thing, select) {
     let div = document.createAttribute('div');
     let ul = document.createAttribute('ul');
     let ulInner = '';
-    if (select === 'species')
+    if (select === 'species'){
         ulInner = `  
             <li>Name: ${thing.name}</li>
             <li>Classification: ${thing.classification}</li>
@@ -76,7 +76,8 @@ function createDiv(thing, select) {
             <li>Homeworld: ${thing.homeworld}</li>
             <li>Language: ${thing.language}</li>
         `
-    else if (select == 'people')
+    }
+    else if (select == 'people'){
         ulInner = `
             <li>Name: ${thing.name}</li>
             <li>Height: ${thing.height}</li>
@@ -87,7 +88,8 @@ function createDiv(thing, select) {
             <li>Birth year: ${thing.birth_year}</li>
             <li>Gender: ${thing.gender}</li>
         `
-    else if (select == 'planets')
+    }
+    else if (select == 'planets'){
         ulInner = `
             <li>Name: ${thing.name}</li>
             <li>Rotation period: ${thing.rotation_period}</li>
@@ -98,8 +100,9 @@ function createDiv(thing, select) {
             <li>Terrain: ${thing.terrain}</li>
             <li>Population: ${thing.population}</li>
         `
-    else if (select == 'starships'){
-        ulInner = `[{"name":"CR90 corvette","model":"CR90 corvette","manufacturer":"Corellian Engineering Corporation","cost_in_credits":"3500000","length":"150","max_atmosphering_speed":"950","crew":"30-165","passengers":"600","cargo_capacity":"3000000","consumables":"1 year","hyperdrive_rating":"2.0","MGLT":"60","starship_class":"corvette","pilots":[],"films":["1","3","6"],"created":"2014-12-10T14:20:33.369000Z","edited":"2014-12-20T21:23:49.867000Z","url":"2","id":"2"}]
+    }
+    else if (select == 'starships' || select == 'vehicles'){
+        ulInner = `
             <li>Name: ${thing.name}</li>
             <li>Model: ${thing.model}</li>
             <li>Manufacturer: ${thing.manufacturer}</li>
@@ -109,7 +112,6 @@ function createDiv(thing, select) {
             <li>Crew: ${thing.crew}</li>
             <li>Passengers: ${thing.passengers}</li>
 
-<<<<<<< HEAD
         `
     }
 }
@@ -117,10 +119,10 @@ function createDiv(thing, select) {
 function selectById(e) {
     const selected = e.dataset.id;
     const response = fetch('https://bgs.jedlik.eu/swapi/api/' + selected);
+    const selectedThing = selected.split("/")
     const thing = response.json();
-    this.createDiv(thing, selected);
+    this.createDiv(thing, selectedThing[0]);
 }
-=======
 function genSmallSpeciesDatas() {
     let row = "";
     let card = "";
@@ -154,4 +156,3 @@ function genSmallSpeciesDatas() {
             console.error(error);
         });
 }
->>>>>>> 99d961d35df03e6642d6a84a4f999fefdc07df46
