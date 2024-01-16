@@ -108,8 +108,6 @@ function createDiv(thing, select) {
             <li>Max speed: ${thing.max_atmosphering_speed}</li>
             <li>Crew: ${thing.crew}</li>
             <li>Passengers: ${thing.passengers}</li>
-
-<<<<<<< HEAD
         `
     }
 }
@@ -120,7 +118,7 @@ function selectById(e) {
     const thing = response.json();
     this.createDiv(thing, selected);
 }
-=======
+
 function genSmallSpeciesDatas() {
     let row = "";
     let card = "";
@@ -154,4 +152,3 @@ function genSmallSpeciesDatas() {
             console.error(error);
         });
 }
->>>>>>> 99d961d35df03e6642d6a84a4f999fefdc07df46
