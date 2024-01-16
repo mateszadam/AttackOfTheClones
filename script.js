@@ -37,7 +37,7 @@ function createDiv(thing, select) {
     let div = document.createAttribute('div');
     let ul = document.createAttribute('ul');
     let ulInner = '';
-    if (select === 'species')
+    if (select === 'species'){
         ulInner = `  
             <li>Name: ${thing.name}</li>
             <li>Classification: ${thing.classification}</li>
@@ -50,7 +50,8 @@ function createDiv(thing, select) {
             <li>Homeworld: ${thing.homeworld}</li>
             <li>Language: ${thing.language}</li>
         `
-    else if (select == 'people')
+    }
+    else if (select == 'people'){
         ulInner = `
             <li>Name: ${thing.name}</li>
             <li>Height: ${thing.height}</li>
@@ -61,7 +62,8 @@ function createDiv(thing, select) {
             <li>Birth year: ${thing.birth_year}</li>
             <li>Gender: ${thing.gender}</li>
         `
-    else if (select == 'planets')
+    }
+    else if (select == 'planets'){
         ulInner = `
             <li>Name: ${thing.name}</li>
             <li>Rotation period: ${thing.rotation_period}</li>
@@ -72,8 +74,14 @@ function createDiv(thing, select) {
             <li>Terrain: ${thing.terrain}</li>
             <li>Population: ${thing.population}</li>
         `
+<<<<<<< HEAD
     else if (select == 'starships' || select == 'vehicles'){
         ulInner =`
+=======
+    }
+    else if (select == 'starships' || select == 'vehicles'){
+        ulInner = `
+>>>>>>> 7205e0a9ab7230b12665ff7690a643b92255cf7d
             <li>Name: ${thing.name}</li>
             <li>Model: ${thing.model}</li>
             <li>Manufacturer: ${thing.manufacturer}</li>
@@ -89,6 +97,7 @@ function createDiv(thing, select) {
 
 }
 
+<<<<<<< HEAD
 function selectById(event) {
     let selected;
     if(event.target.dataset.id == undefined){
@@ -114,6 +123,16 @@ function selectById(event) {
 }
 
 function genDatas(data1, img, idS) {
+=======
+function selectById(e) {
+    const selected = e.dataset.id;
+    const response = fetch('https://bgs.jedlik.eu/swapi/api/' + selected);
+    const selectedThing = selected.split("/")
+    const thing = response.json();
+    this.createDiv(thing, selectedThing[0]);
+}
+function genSmallSpeciesDatas() {
+>>>>>>> 7205e0a9ab7230b12665ff7690a643b92255cf7d
     let row = "";
     let card = "";
     let peoples = "";
@@ -146,6 +165,7 @@ function genDatas(data1, img, idS) {
             console.error(error);
         });
 }
+<<<<<<< HEAD
 
 function onClicks() {
     let cards = document.querySelectorAll('.card');
@@ -154,3 +174,5 @@ function onClicks() {
         element.addEventListener('click', selectById);
     });
 }
+=======
+>>>>>>> 7205e0a9ab7230b12665ff7690a643b92255cf7d
