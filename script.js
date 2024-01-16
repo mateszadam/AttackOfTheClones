@@ -84,11 +84,7 @@ function createDiv(thing, select) {
             <li>Max speed: ${thing.max_atmosphering_speed}</li>
             <li>Crew: ${thing.crew}</li>
             <li>Passengers: ${thing.passengers}</li>
-<<<<<<< HEAD
         `
-=======
-`
->>>>>>> 918f2e2f8ec789dfab4deaa2c5749d9ec4264852
     }
     document.querySelector('.modal-body').innerHTML = ulInner;
 
@@ -118,13 +114,10 @@ function selectById(event) {
 
 }
 
-<<<<<<< HEAD
-function genSmallSpeciesDatas() {
-=======
+
 
 function genDatas(data1, img, idS) {
 
->>>>>>> 918f2e2f8ec789dfab4deaa2c5749d9ec4264852
     let row = "";
     let card = "";
     let peoples = "";
@@ -150,15 +143,13 @@ function genDatas(data1, img, idS) {
                 row += card;
             });
             // console.log(row);
-            document.querySelector('.cards').innerHTML += row;
+            document.querySelector(`.${img}`).innerHTML += row;
         })
         .catch(error => {
             // Handle any errors here
             console.error(error);
         });
 }
-<<<<<<< HEAD
-=======
 
 function onClicks() {
     let cards = document.querySelectorAll('.card');
@@ -167,4 +158,3 @@ function onClicks() {
         element.addEventListener('click', selectById);
     });
 }
->>>>>>> 918f2e2f8ec789dfab4deaa2c5749d9ec4264852
