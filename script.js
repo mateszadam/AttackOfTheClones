@@ -156,5 +156,12 @@ function onClicks() {
     console.log(cards);
     cards.forEach(element => {
         element.addEventListener('click', selectById);
+        element.addEventListener('click', function () {
+            let fix = document.querySelector('.fix');
+            fix.style.opacity = 1;
+            fix.style.display = "block";
+            
+            
+        });
     });
 }
