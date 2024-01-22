@@ -38,22 +38,28 @@ function createDiv(thing, select) {
     let ul = document.createAttribute('ul');
     let ulInner = '';
     if (select === 'species'){
-        ulInner = `  
-            <li>Name: ${thing.name}</li>
-            <li>Classification: ${thing.classification}</li>
-            <li>Designation: ${thing.designation}</li>
-            <li>Average height: ${thing.average_height}</li>
-            <li>Skin colors: ${thing.skin_colors}</li>
-            <li>Hair colors: ${thing.hair_colors}</li>
-            <li>Eye colors: ${thing.eye_colors}</li>
-            <li>Average lifespan: ${thing.average_lifespan}</li>
-            <li>Homeworld: ${thing.homeworld}</li>
-            <li>Language: ${thing.language}</li>
-        `
+        ulInner = ` 
+        <div class="list">
+            <h1 class="modal__title">${thing.name}</h1>
+            <ul>
+            <li><span>Classification: ${thing.classification}</span></li>
+            <li><span>Designation: ${thing.designation}</span></li>
+            <li><span>Average height: ${thing.average_height}</span></li>
+            <li><span>Skin colors: ${thing.skin_colors}</span></li>
+            <li><span>Hair colors: ${thing.hair_colors}</span></li>
+            <li><span>Eye colors: ${thing.eye_colors}</span></li>
+            <li><span>Average pfespan: ${thing.average_lifespan}</span></li>
+            <li><span>Homeworld: ${thing.homeworld}</span></li>
+            <li><span>Language: ${thing.language}</span></li>
+          </ul>
+        </div>
+            `
     }
+
+
     else if (select == 'people'){
-        ulInner = `
-            <li>Name: ${thing.name}</li>
+        upnner = `
+            <p>Name: ${thing.name}</>
             <li>Height: ${thing.height}</li>
             <li>Mass: ${thing.mass}</li>
             <li>Hair color: ${thing.hair_color}</li>
@@ -105,7 +111,7 @@ function selectById(event) {
     fetch('https://bgs.jedlik.eu/swapi/api/' + selected)
         .then(response => response.json())
         .then(data => {
-            createDiv(data, selected.split(perjel)[0]);
+            createDiv(data[0], selected.split(perjel)[0]);
         })
         .catch(error => {
             // Handle any errors here
