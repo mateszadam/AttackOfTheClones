@@ -16,6 +16,7 @@ function getDatas() {
             Planets = data[0].planets;
             Vehicles = data[0].vehicles;
             Starships = data[0].starships;
+            document.querySelector(".desc").innerHTML = data[0].opening_crawl
             genDatas("people", "characters", People);
             genDatas("species", "species", Species);
             genDatas("planets", "planets", Planets);
@@ -41,58 +42,66 @@ function createDiv(thing, select) {
         ulInner = ` 
         <div class="list">
             <h1 class="modal__title">${thing.name}</h1>
-            <ul>
-            <li><span>Classification: ${thing.classification}</span></li>
-            <li><span>Designation: ${thing.designation}</span></li>
-            <li><span>Average height: ${thing.average_height}</span></li>
-            <li><span>Skin colors: ${thing.skin_colors}</span></li>
-            <li><span>Hair colors: ${thing.hair_colors}</span></li>
-            <li><span>Eye colors: ${thing.eye_colors}</span></li>
-            <li><span>Average pfespan: ${thing.average_lifespan}</span></li>
-            <li><span>Homeworld: ${thing.homeworld}</span></li>
-            <li><span>Language: ${thing.language}</span></li>
-          </ul>
+            <p><span>Classification: ${thing.classification}</span></p>
+            <p><span>Designation: ${thing.designation}</span></p>
+            <p><span>Average height: ${thing.average_height}</span></p>
+            <p><span>Skin colors: ${thing.skin_colors}</span></p>
+            <p><span>Hair colors: ${thing.hair_colors}</span></p>
+            <p><span>Eye colors: ${thing.eye_colors}</span></p>
+            <p><span>Average pfespan: ${thing.average_pfespan}</span></p>
+            <p><span>Homeworld: ${thing.homeworld}</span></p>
+            <p><span>Language: ${thing.language}</span></p>
         </div>
             `
     }
 
 
     else if (select == 'people'){
-        upnner = `
-            <p>Name: ${thing.name}</>
-            <li>Height: ${thing.height}</li>
-            <li>Mass: ${thing.mass}</li>
-            <li>Hair color: ${thing.hair_color}</li>
-            <li>Skin color: ${thing.skin_color}</li>
-            <li>Eye color: ${thing.eye_color}</li>
-            <li>Birth year: ${thing.birth_year}</li>
-            <li>Gender: ${thing.gender}</li>
+        ulInner = `
+        <div class="list">
+            <h1 class="modal__title">${thing.name}</h1>
+            <p><span>Height: ${thing.height}</span></p>
+            <p><span>Mass: ${thing.mass}</span></p>
+            <p><span>Hair color: ${thing.hair_color}</span></p>
+            <p><span>Skin colors: ${thing.skin_colors}</span></p>
+            <p><span>Eye colors: ${thing.eye_colors}</span></p>
+            <p><span>Birth year: ${thing.birth_year}</span></p>
+            <p><span>Gender: ${thing.gender}</span></p>
+        </div>
         `
     }
     else if (select == 'planets'){
         ulInner = `
-            <li>Name: ${thing.name}</li>
-            <li>Rotation period: ${thing.rotation_period}</li>
-            <li>Orbital period: ${thing.orbital_period}</li>
-            <li>Diameter: ${thing.diameter}</li>
-            <li>Climate: ${thing.climate}</li>
-            <li>Gravity: ${thing.gravity}</li>
-            <li>Terrain: ${thing.terrain}</li>
-            <li>Population: ${thing.population}</li>
+
+        
+        <div class="list">
+            <h1 class="modal__title">${thing.name}</h1>
+            <p><span>Rotation period: ${thing.rotation_period}</span></p>
+            <p><span>Orbital period: ${thing.orbital_period}</span></p>
+            <p><span>Diameter: ${thing.diameter}</span></p>
+            <p><span>Climate: ${thing.climate}</span></p>
+            <p><span>Gravity: ${thing.gravity}</span></p>
+            <p><span>Terrain: ${thing.terrain}</span></p>
+            <p><span>Population: ${thing.population}</span></p>
+        </div>
         `}
     else if (select == 'starships' || select == 'vehicles'){
         ulInner =` 
-            <li>Name: ${thing.name}</li>
-            <li>Model: ${thing.model}</li>
-            <li>Manufacturer: ${thing.manufacturer}</li>
-            <li>Cost in credits: ${thing.cost_in_credits}</li>
-            <li>Length: ${thing.lenght}</li>
-            <li>Max speed: ${thing.max_atmosphering_speed}</li>
-            <li>Crew: ${thing.crew}</li>
-            <li>Passengers: ${thing.passengers}</li>
+        
+        <div class="list">
+            <h1 class="modal__title">${thing.name}</h1>
+            <p><span>Manufacturer: ${thing.manufacturer}</span></p>
+            <p><span>Cost in credits: ${thing.cost_in_credits}</span></p>
+            <p><span>Length: ${thing.lenght}</span></p>
+            <p><span>Max speed: ${thing.max_atmosphering_speed}</span></p>
+            <p><span>Crew: ${thing.crew}</span></p>
+            <p><span>Passengers: ${thing.passengers}</span></p>
+        </div>
+
         `
     }
-    document.querySelector('.modal-body').innerHTML = ulInner;
+
+    document.querySelector('.modal-inner').innerHTML = ulInner;
 
 }
 
@@ -156,9 +165,16 @@ function genDatas(data1, img, idS) {
             console.error(error);
         });
 }
+function closeBTN(){
+    let fix = document.querySelector('.fix');
+    fix.style.opacity = 0;
+    fix.style.display = "none";
+}
+
 
 function onClicks() {
     let cards = document.querySelectorAll('.card');
+    document.querySelector(".close").addEventListener("click", closeBTN)
     console.log(cards);
     cards.forEach(element => {
         element.addEventListener('click', selectById);
