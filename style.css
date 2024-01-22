@@ -46,6 +46,8 @@ header a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
+  width: 60%;
+  margin: auto;
 }
 
 
@@ -145,7 +147,9 @@ section {
   position: fixed;
   width: 100%;
 }
-
+.list *{
+  user-select: none;
+}
 .navbar li { 
     width: calc(20% - 5px);
     height: 40px;
@@ -189,7 +193,7 @@ a {
   color: black;
   font-weight: 700;
   letter-spacing: 1px;
-  line-height: 200%;
+  margin: 10px;
   margin-bottom: 10px;
 }
 
@@ -202,6 +206,7 @@ a {
   width: fit-content;
   padding: 5px;
   margin: auto;
+  margin-top: 10px;
 }
 
 

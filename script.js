@@ -38,37 +38,81 @@ function createDiv(thing, select) {
     let div = document.createAttribute('div');
     let ul = document.createAttribute('ul');
     let ulInner = '';
+    let films = '';
     if (select === 'species'){
-        ulInner = ` 
-        <div class="list">
-            <h1 class="modal__title">${thing.name}</h1>
-            <p><span>Classification: ${thing.classification}</span></p>
-            <p><span>Designation: ${thing.designation}</span></p>
-            <p><span>Average height: ${thing.average_height}</span></p>
-            <p><span>Skin colors: ${thing.skin_colors}</span></p>
-            <p><span>Hair colors: ${thing.hair_colors}</span></p>
-            <p><span>Eye colors: ${thing.eye_colors}</span></p>
-            <p><span>Average pfespan: ${thing.average_pfespan}</span></p>
-            <p><span>Homeworld: ${thing.homeworld}</span></p>
-            <p><span>Language: ${thing.language}</span></p>
-        </div>
-            `
+        filmList = thing.films.join(',');
+        fetch('https://bgs.jedlik.eu/swapi/api/group/films?ids=' + filmList)
+        .then(response => response.json())
+        .then(data => {
+            console.log("dsad");
+            data.forEach(element => {
+                films += `<p><span>${element.title}</span></p>`;
+            });
+            ulInner = ` 
+            <div class="list">
+                <h1 class="modal__title">${thing.name}</h1>
+                <p><span>Classification: ${thing.classification}</span></p>
+                <p><span>Designation: ${thing.designation}</span></p>
+                <p><span>Average height: ${thing.average_height}</span></p>
+                <p><span>Skin colors: ${thing.skin_colors}</span></p>
+                <p><span>Hair colors: ${thing.hair_colors}</span></p>
+                <p><span>Eye colors: ${thing.eye_colors}</span></p>
+                <p><span>Average pfespan: ${thing.average_pfespan}</span></p>
+                <p><span>Homeworld: ${thing.homeworld}</span></p>
+                <p><span>Language: ${thing.language}</span></p>
+                <p><span>Films:</span></p>
+                ${films}
+            </div>
+                `
+                console.log(films);
+            document.querySelector('.modal-inner').innerHTML = ulInner;
+
+        })
+        .catch(error => {
+            // Handle any errors here
+            console.error(error);
+        });
+        
+
     }
 
 
     else if (select == 'people'){
-        ulInner = `
-        <div class="list">
-            <h1 class="modal__title">${thing.name}</h1>
-            <p><span>Height: ${thing.height}</span></p>
-            <p><span>Mass: ${thing.mass}</span></p>
-            <p><span>Hair color: ${thing.hair_color}</span></p>
-            <p><span>Skin colors: ${thing.skin_colors}</span></p>
-            <p><span>Eye colors: ${thing.eye_colors}</span></p>
-            <p><span>Birth year: ${thing.birth_year}</span></p>
-            <p><span>Gender: ${thing.gender}</span></p>
-        </div>
-        `
+ 
+        console.log(thing.films);
+        filmList = thing.films.join(',');
+        console.log(filmList);
+        fetch('https://bgs.jedlik.eu/swapi/api/group/films?ids=' + filmList)
+        .then(response => response.json())
+        .then(data => {
+            console.log("dsad");
+            data.forEach(element => {
+                console.log(element);
+                films += `<p><span>${element.title}</span></p>`;
+            });
+            ulInner = `
+            <div class="list">
+                <h1 class="modal__title">${thing.name}</h1>
+                <p><span>Height: ${thing.height}</span></p>
+                <p><span>Mass: ${thing.mass}</span></p>
+                <p><span>Hair color: ${thing.hair_color}</span></p>
+                <p><span>Skin colors: ${thing.skin_colors}</span></p>
+                <p><span>Eye colors: ${thing.eye_colors}</span></p>
+                <p><span>Birth year: ${thing.birth_year}</span></p>
+                <p><span>Gender: ${thing.gender}</span></p>
+                <p><span>Films:</span></p>
+                ${films}
+            </div>
+            `
+                console.log(films);
+            document.querySelector('.modal-inner').innerHTML = ulInner;
+
+        })
+        .catch(error => {
+            // Handle any errors here
+            console.error(error);
+        });
+
     }
     else if (select == 'planets'){
         ulInner = `
@@ -101,9 +145,10 @@ function createDiv(thing, select) {
         `
     }
 
+    if(ulInner != ''){
     document.querySelector('.modal-inner').innerHTML = ulInner;
 
-}
+}}
 
 function selectById(event) {
     let selected;
