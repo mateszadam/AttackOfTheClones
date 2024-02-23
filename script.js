@@ -57,7 +57,7 @@ function createDiv(thing, select) {
                 <p><span>Skin colors: ${thing.skin_colors}</span></p>
                 <p><span>Hair colors: ${thing.hair_colors}</span></p>
                 <p><span>Eye colors: ${thing.eye_colors}</span></p>
-                <p><span>Average pfespan: ${thing.average_pfespan}</span></p>
+                <p><span>Average pfespan: ${thing.average_lifespan}</span></p>
                 <p><span>Homeworld: ${thing.homeworld}</span></p>
                 <p><span>Language: ${thing.language}</span></p>
                 <p><span>Films:</span></p>
@@ -96,8 +96,8 @@ function createDiv(thing, select) {
                 <p><span>Height: ${thing.height}</span></p>
                 <p><span>Mass: ${thing.mass}</span></p>
                 <p><span>Hair color: ${thing.hair_color}</span></p>
-                <p><span>Skin colors: ${thing.skin_colors}</span></p>
-                <p><span>Eye colors: ${thing.eye_colors}</span></p>
+                <p><span>Skin colors: ${thing.skin_color}</span></p>
+                <p><span>Eye colors: ${thing.eye_color}</span></p>
                 <p><span>Birth year: ${thing.birth_year}</span></p>
                 <p><span>Gender: ${thing.gender}</span></p>
                 <p><span>Films:</span></p>
@@ -112,7 +112,6 @@ function createDiv(thing, select) {
             // Handle any errors here
             console.error(error);
         });
-
     }
     else if (select == 'planets'){
         ulInner = `
@@ -136,7 +135,7 @@ function createDiv(thing, select) {
             <h1 class="modal__title">${thing.name}</h1>
             <p><span>Manufacturer: ${thing.manufacturer}</span></p>
             <p><span>Cost in credits: ${thing.cost_in_credits}</span></p>
-            <p><span>Length: ${thing.lenght}</span></p>
+            <p><span>Length: ${thing.length}</span></p>
             <p><span>Max speed: ${thing.max_atmosphering_speed}</span></p>
             <p><span>Crew: ${thing.crew}</span></p>
             <p><span>Passengers: ${thing.passengers}</span></p>
